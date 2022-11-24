@@ -32,7 +32,8 @@ const ProductCtrl = {
 
             const products = await Product.findAll({
                 include: {
-                    association: 'categories'
+                    association: 'categories',
+                    attributes: ['id', 'nombre', 'image']
                 },
                 attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category']
             });
@@ -52,7 +53,8 @@ const ProductCtrl = {
             const { id } = req.params;
             const product = await Product.findByPk(id, {
                 include: {
-                    association: 'categories'
+                    association: 'categories',
+                    attributes: ['id', 'nombre', 'image']
                 },
                 attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category']
             });
