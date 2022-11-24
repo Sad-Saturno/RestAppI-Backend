@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       products.belongsTo(models.categories, { as: 'categories', foreignKey: 'id_category' });
-      products.belongsToMany(models.orders, { as: 'orders', through: 'order_has_products'  });
       products.belongsToMany(models.localOrders, { as: 'localOrders', through: 'localOrders_has_products'  });
     }
   }
