@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     updatedat: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: false,
     modelName: 'categories',
   });
   return categories;
