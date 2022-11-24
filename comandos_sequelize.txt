@@ -1,0 +1,11 @@
+Comando para generar una migracion:
+npx sequelize-cli migration:generate --name migration-skeleton
+
+Comando para migrar la base de datos:
+npx sequelize-cli db:migrate
+
+Comando para deshacer una migracion:
+npx sequelize-cli db:migrate:undo
+
+Comando para generar modelo:
+npx sequelize-cli model:generate --name model_name --attributes model_attributes
