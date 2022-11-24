@@ -189,7 +189,7 @@ const ProductCtrl = {
                 include: {
                     association: 'products'
                 },
-                attributes: ['id', 'nombre', 'descripcion', 'image']
+                attributes: ['id', 'nombre', 'image']
             });
             if (!categories) return res.status(400).json('No existe ninguna categoria registrado');
 
@@ -206,7 +206,7 @@ const ProductCtrl = {
 
             const { id } = req.params;
             const category = await Category.findByPk(id, {
-                attributes: ['id', 'nombre', 'descripcion', 'image']
+                attributes: ['id', 'nombre', 'image']
             });
             if (!category) return res.status(400).json(`No existe la categoria con el id ${id}`);
 
