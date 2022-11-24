@@ -35,7 +35,7 @@ const ProductCtrl = {
                     association: 'categories',
                     attributes: ['id', 'nombre', 'image']
                 },
-                attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category']
+                attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category', 'image1']
             });
             if (!products) return res.status(400).json('No existe ningun producto registrado');
 
@@ -56,7 +56,7 @@ const ProductCtrl = {
                     association: 'categories',
                     attributes: ['id', 'nombre', 'image']
                 },
-                attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category']
+                attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category', 'image1']
             });
             if (!product) return res.status(400).json(`No existe ningun producto registrado con el id ${id}`);
 
@@ -190,7 +190,7 @@ const ProductCtrl = {
             const categories = await Category.findAll({
                 include: {
                     association: 'products',
-                    attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category']
+                    attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category', 'image1']
                 },
                 attributes: ['id', 'nombre', 'image']
             });
