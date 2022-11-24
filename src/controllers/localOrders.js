@@ -39,6 +39,7 @@ const LocalOrdersCtrl = {
             const orders = await LocalOrders.findAll({
                 include: {
                     association: 'products',
+                    attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category', 'image1']
                 }
             });
             if (!orders) return res.status(404).json(`No hay ninguna orden registrada`);
@@ -82,7 +83,8 @@ const LocalOrdersCtrl = {
 
             await LocalOrders.findByPk(id, {
                 include: {
-                    association: 'products'
+                    association: 'products',
+                    attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category', 'image1']
                 }
             }).then(response => {
                 res.status(200).json(response);
@@ -98,7 +100,8 @@ const LocalOrdersCtrl = {
             const { id } = req.params;
             await LocalOrders.findAll({
                 include: {
-                    association: 'products'
+                    association: 'products',
+                    attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category', 'image1']
                 },
                 where: {
                     status: 'Cerrada',
