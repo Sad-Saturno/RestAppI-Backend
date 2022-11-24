@@ -28,7 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     expirationStatus: DataTypes.STRING,
     newPrice: DataTypes.DOUBLE,
     sold: DataTypes.INTEGER,
-    descripcion: DataTypes.STRING
+    descripcion: DataTypes.STRING,
+    createdat: DataTypes.STRING,
+    updatedat: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'products',

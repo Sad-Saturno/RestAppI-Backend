@@ -34,6 +34,7 @@ const ProductCtrl = {
                 include: {
                     association: 'categories'
                 },
+                attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category']
             });
             if (!products) return res.status(400).json('No existe ningun producto registrado');
 
@@ -52,7 +53,8 @@ const ProductCtrl = {
             const product = await Product.findByPk(id, {
                 include: {
                     association: 'categories'
-                }
+                },
+                attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category']
             });
             if (!product) return res.status(400).json(`No existe ningun producto registrado con el id ${id}`);
 
@@ -186,7 +188,8 @@ const ProductCtrl = {
             const categories = await Category.findAll({
                 include: {
                     association: 'products'
-                }
+                },
+                attributes: ['id', 'nombre', 'descripcion', 'image']
             });
             if (!categories) return res.status(400).json('No existe ninguna categoria registrado');
 
@@ -202,7 +205,9 @@ const ProductCtrl = {
         try {
 
             const { id } = req.params;
-            const category = await Category.findByPk(id);
+            const category = await Category.findByPk(id, {
+                attributes: ['id', 'nombre', 'descripcion', 'image']
+            });
             if (!category) return res.status(400).json(`No existe la categoria con el id ${id}`);
 
             res.status(200).json(category);
