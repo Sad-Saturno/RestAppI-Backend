@@ -12,7 +12,7 @@ router
     .put('/addDiscount/:id', addDiscountToProduct)
     .put('/deleteDiscount/:id', deleteDiscountToProduct)
     .get('/expiratedProduct', productExpirated)
-    .post('/createCategory', upload.single('imagen'), createCategory)
+    .post('/createCategory', upload.single('image'), createCategory)
     .get('/getAllCategories', getAllCategories)
     .get('/getOneCategory/:id', getOneCategory)
     .put('/updateCategory/:id', updateCategory)

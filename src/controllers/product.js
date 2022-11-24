@@ -9,11 +9,11 @@ const ProductCtrl = {
 
         try {
 
-            const { category_id, product_id, nombre, precio, stock, description, expirationDate } = req.body;
+            const { id_category, product_id, nombre, precio, stock, description, expirationDate } = req.body;
             const result = await cloudinary.uploader.upload(req.file.path);
 
             await Product.build({
-                category_id, product_id, nombre, precio, cloudinary_id: result.public_id, imagen: result.secure_url,
+                id_category, product_id, nombre, precio, cloudinary_id: result.public_id, imagen: result.secure_url,
                 stock, description, expirationDate, expirationStatus: 'Fresco'
             }).save().then(newProduct => {
                 res.status(201).json(newProduct);
@@ -68,8 +68,8 @@ const ProductCtrl = {
         try {
 
             const { id } = req.params;
-            const { category_id, product_id, nombre, precio, stock, description } = req.body;
-            await Product.update({ category_id, product_id, nombre, precio, stock, description }, { where: { id: id } }).then(() => {
+            const { id_category, product_id, nombre, precio, stock, description } = req.body;
+            await Product.update({ id_category, product_id, nombre, precio, stock, description }, { where: { id: id } }).then(() => {
                 res.status(200).json('El producto se ha actualizado');
             }).catch(err => {
                 return res.status(400).json(`Ocurrio un error ${err}`);
@@ -168,7 +168,7 @@ const ProductCtrl = {
             const { nombre } = req.body;
             const result = await cloudinary.uploader.upload(req.file.path);
 
-            await Category.build({ nombre, cloudinary_id: result.public_id, imagen: result.secure_url, }).save().then(newCategory => {
+            await Category.build({ nombre, cloudinary_id: result.public_id, image: result.secure_url, }).save().then(newCategory => {
                 res.status(201).json(newCategory);
             }).catch(err => {
                 return res.status(400).json(`Ocurrio un error ${err}`);

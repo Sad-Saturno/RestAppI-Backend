@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   categories.init({
     nombre: DataTypes.STRING,
     cloudinary_id: DataTypes.STRING,
-    imagen: DataTypes.STRING
+    image: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'categories',

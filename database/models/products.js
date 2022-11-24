@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      products.belongsTo(models.categories, { as: 'categories', foreignKey: 'category_id' });
+      products.belongsTo(models.categories, { as: 'categories', foreignKey: 'id_category' });
       products.belongsToMany(models.orders, { as: 'orders', through: 'order_has_products'  });
       products.belongsToMany(models.localOrders, { as: 'localOrders', through: 'localOrders_has_products'  });
     }
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     expirationStatus: DataTypes.STRING,
     newPrice: DataTypes.DOUBLE,
     sold: DataTypes.INTEGER,
-    description: DataTypes.STRING
+    descripcion: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'products',
