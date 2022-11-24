@@ -189,7 +189,8 @@ const ProductCtrl = {
 
             const categories = await Category.findAll({
                 include: {
-                    association: 'products'
+                    association: 'products',
+                    attributes: ['id', 'product_id', 'nombre', 'precio', 'imagen', 'stock', 'discount', 'discount_price', 'newPrice', 'descripcion', 'id_category']
                 },
                 attributes: ['id', 'nombre', 'image']
             });
